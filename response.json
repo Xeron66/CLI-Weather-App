@@ -1,69 +1,26 @@
 {
-    "latitude": 23.725834,
-    "longitude": 90.38015,
-    "generationtime_ms": 10.636568069458008,
-    "utc_offset_seconds": 21600,
-    "timezone": "Asia/Dhaka",
-    "timezone_abbreviation": "GMT+6",
-    "elevation": 27.0,
-    "current_units": {
-        "time": "iso8601",
-        "interval": "seconds",
-        "temperature_2m": "°C",
-        "relative_humidity_2m": "%",
-        "apparent_temperature": "°C",
-        "is_day": "",
-        "precipitation": "mm",
-        "rain": "mm",
-        "wind_speed_10m": "km/h",
-        "wind_direction_10m": "°"
-    },
-    "current": {
-        "time": "2026-10-10T12:00",
-        "interval": 900,
-        "temperature_2m": 31.9,
-        "relative_humidity_2m": 53,
-        "apparent_temperature": 37.3,
-        "is_day": 1,
-        "precipitation": 0.10,
-        "rain": 0.00,
-        "wind_speed_10m": 2.7,
-        "wind_direction_10m": 172
-    },
-    "daily_units": {
-        "time": "iso8601",
-        "temperature_2m_max": "°C",
-        "sunrise": "iso8601",
-        "sunset": "iso8601",
-        "daylight_duration": "s",
-        "uv_index_max": "",
-        "wind_speed_10m_max": "km/h",
-        "precipitation_probability_max": "%"
-    },
-    "daily": {
-        "time": [
-            "2026-10-10"
-        ],
-        "temperature_2m_max": [
-            32.1
-        ],
-        "sunrise": [
-            "2026-10-10T05:53"
-        ],
-        "sunset": [
-            "2026-10-10T17:37"
-        ],
-        "daylight_duration": [
-            42229.56
-        ],
-        "uv_index_max": [
-            7.35
-        ],
-        "wind_speed_10m_max": [
-            8.9
-        ],
-        "precipitation_probability_max": [
-            89
-        ]
-    }
+    "results": [
+        {
+            "id": 1185241,
+            "name": "Dhaka",
+            "latitude": 23.7104,
+            "longitude": 90.40744,
+            "elevation": 23.0,
+            "feature_code": "PPLC",
+            "country_code": "BD",
+            "admin1_id": 1337179,
+            "admin2_id": 1337178,
+            "admin3_id": 11282280,
+            "admin4_id": 11286309,
+            "timezone": "Asia/Dhaka",
+            "population": 10356500,
+            "country_id": 1210997,
+            "country": "Bangladesh",
+            "admin1": "Dhaka Division",
+            "admin2": "Dhaka District",
+            "admin3": "DCC (Kotwali)",
+            "admin4": "Ward - 72"
+        }
+    ],
+    "generationtime_ms": 2.910614
 }

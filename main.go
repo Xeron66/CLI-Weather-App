@@ -5,8 +5,16 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 )
+
+type Location struct {
+	Results []struct {
+		Lattitude float64 `json:"latitude"`
+		Longitude float64 `json:"longitude"`
+	} `json:"results"`
+}
 
 type Weather struct {
 	Timezone             string  `json:"timezone"`
@@ -50,19 +58,52 @@ type Weather struct {
 }
 
 func main() {
-	res, err := http.Get("https://api.open-meteo.com/v1/forecast?latitude=23.7104&longitude=90.4074&daily=temperature_2m_max,sunrise,sunset,daylight_duration,uv_index_max,wind_speed_10m_max,precipitation_probability_max&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,wind_speed_10m,wind_direction_10m&timezone=auto&forecast_days=1")
+	// Geocoding conversion to Lattitude and Longitude
+	location := "Dhaka"
 
+	if len(os.Args) >= 2 {
+		location = os.Args[1]
+	}
+	res1, err := http.Get("https://geocoding-api.open-meteo.com/v1/search?name=" + location + "&count=1&language=en&format=json")
 	if err != nil {
 		panic(err)
 	}
 
-	defer res.Body.Close()
+	defer res1.Body.Close()
 
-	if res.StatusCode != 200 {
+	if res1.StatusCode != 200 {
+		panic("Geocodde API Not Available!")
+	}
+
+	geoBody, err := io.ReadAll(res1.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	// fmt.Println(string(geoBody))
+
+	var g Location
+	err = json.Unmarshal(geoBody, &g)
+	if err != nil {
+		panic(err)
+	}
+
+	lattitude, longitude := g.Results[0].Lattitude, g.Results[0].Longitude
+
+	// Weather API Response
+	url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&daily=temperature_2m_max,sunrise,sunset,daylight_duration,uv_index_max,wind_speed_10m_max,precipitation_probability_max&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,wind_speed_10m,wind_direction_10m&timezone=auto&forecast_days=1", lattitude, longitude)
+	res2, err := http.Get(url)
+	if err != nil {
+		panic(err)
+	}
+
+	defer res2.Body.Close()
+
+	if res2.StatusCode != 200 {
 		panic("Weather API Not Available!")
 	}
 
-	body, err := io.ReadAll(res.Body)
+	body, err := io.ReadAll(res2.Body)
 	if err != nil {
 		panic(err)
 	}
