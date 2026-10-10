@@ -93,7 +93,7 @@ Depending on the API parameters requested, the application can display informati
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Xeron66/Go-with-test.git
+git clone https://github.com/Xeron66/CLI-Weather-App.git
 ```
 
 ### 2. Navigate to the Project Directory
@@ -101,7 +101,7 @@ git clone https://github.com/Xeron66/Go-with-test.git
 Navigate to the directory containing the weather application's `go.mod` file and Go source code.
 
 ```bash
-cd Go-with-test
+cd CLI-Weather-App
 ```
 
 If the weather application is in a subdirectory, navigate into that directory instead.
@@ -168,3 +168,9 @@ Weather data and geocoding services are provided by [Open-Meteo](https://open-me
 ---
 
 **Note:** This is a learning project built to practise Go fundamentals through a real-world API integration.
+
+## CLI Screen Shots
+<div align="center">
+  <img src="screenshots/screenshot-1.png" width="48%" alt="Weather CLI output for Dhaka" />
+  <img src="screenshots/screenshot-2.png" width="48%" alt="Weather CLI output for London" />
+</div>
